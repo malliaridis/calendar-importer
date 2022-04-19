@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "calendar-importer-347701"
+  },
+  "targets": {
+    "calendar-importer-347701": {
+      "hosting": {
+        "calendar-importer": [
+          "calendar-importer-347701"
+        ]
+      }
+    }
+  }
+}

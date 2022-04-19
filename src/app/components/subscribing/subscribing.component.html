@@ -1,0 +1,33 @@
+<div class="mat-h1">Subscribe to Google Calendar</div>
+<div class="mat-body-1" style="margin-bottom:16px;">
+  You are about to subscribe to the calendar with the id "<span class="accent-color-light">{{calendarId}}</span>".
+</div>
+<div>
+  <button mat-button class="sub-button" (click)="importToGoogleCalendar()">
+    <mat-icon svgIcon="google_calendar" class="sub-button-icon"></mat-icon>
+    Import to Google Calendar*
+  </button>
+</div>
+<div>
+  <button mat-button class="sub-button" (click)="copyICalLink()">
+    <mat-icon class="sub-button-icon">content_copy</mat-icon>
+    Copy the iCal link
+  </button>
+</div>
+<div>
+  <button mat-button class="sub-button" (click)="openCalendar()">
+    <mat-icon class="sub-button-icon">launch</mat-icon>
+    Open calendar link (for iOS)
+  </button>
+</div>
+<div>
+  <button mat-button class="sub-button" (click)="downloadCalendar()">
+    <mat-icon class="sub-button-icon">download</mat-icon>
+    Download calendar as a file
+  </button>
+</div>
+
+<p class="mat-caption">* Mobile users who use Google Calendar have to use a computer for importing a calendar.
+  This website simplifies this process by importing it via granted permissions. You can still use the iCal link and
+  manually
+  import it. For more information read <a href="https://goo.gle/39axJie">Import events to Google Calendar</a>.</p>

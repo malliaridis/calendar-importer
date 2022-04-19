@@ -1,0 +1,13 @@
+<h1 class="mat-h1">Calendar Importer</h1>
+<p>This is a simple Google Calendar sharing and importing service. By granting this website access to your calendars
+a list of your Google Calendars will be shown with the possibility to copy a shareable link and send it to friends.</p>
+
+<p>With the shared link your friends can subscribe to your calendar in various ways. The only prerequisite for it to
+work is that the calendar is already publicly accessible.</p>
+
+<p class="mat-caption" style="margin-top: 16px;">Note: This is not an official Google product. The term "Google
+  Calendar" is solely used to reference to Google's product and the calendars provided by that.</p>
+
+<ng-container *ngIf="isAuthenticated">
+  <button mat-flat-button color="accent" (click)="gotToSharing()" style="margin-right: 8px;">Go to Calendar List</button>
+</ng-container>

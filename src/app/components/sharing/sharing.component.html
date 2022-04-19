@@ -1,0 +1,15 @@
+<div class="mat-h1">Share your Google Calendar with friends!</div>
+<div class="mat-body-1" style="margin-bottom: 16px;">Simply click on the calendar you want to share
+  and send the link to friends.
+</div>
+<ng-container *ngFor="let calendar of calendars">
+  <div class="calendar-entry">
+    <button class="calendar-button" mat-button (click)="copyShareableLink(calendar)">
+      <mat-icon aria-hidden="false" aria-label="copy icon">content_copy</mat-icon>
+      {{calendar.summary}}
+    </button>
+  </div>
+</ng-container>
+<div class="mat-caption" style="margin-top: 24px; margin-bottom: 16px;">
+  Note: Make sure to make the calendar publicly available before sharing it with others.
+</div>
