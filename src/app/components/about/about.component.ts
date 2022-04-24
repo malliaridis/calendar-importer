@@ -24,7 +24,7 @@ export class AboutComponent implements OnInit {
     this.isAuthenticated = this.oauthService.getIdentityClaims() != null;
   }
 
-  gotToSharing() {
+  onGetStarted(): void {
     this.router.navigate(['/sharing']);
   }
 }

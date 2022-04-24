@@ -4,7 +4,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {OAuthService} from "angular-oauth2-oidc";
 import {authCodeFlowConfig} from "./utils/auth-config";
 import {Scope} from "./domain/Calendar";
-import {ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router} from "@angular/router";
+import {ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, RouterLinkActive} from "@angular/router";
 import {SharingComponent, SubscribingComponent} from "./components";
 
 @Component({
@@ -19,6 +19,10 @@ export class AppComponent implements OnInit{
   isSubscribing: Boolean = false;
 
   isAuthenticated: Boolean = false;
+
+  isSharing: Boolean = false;
+
+  isAbout: Boolean = false;
 
   constructor(
     private matIconRegistry: MatIconRegistry,
@@ -41,7 +45,9 @@ export class AppComponent implements OnInit{
     this.initAuthenticatedState();
 
     this.router.events.subscribe((event) => {
-        if(event instanceof NavigationEnd) {}
+        if(event instanceof NavigationEnd) {
+          this.isAbout = event.url == '/';
+        }
     })
   }
 
@@ -60,14 +66,6 @@ export class AppComponent implements OnInit{
     });
   }
 
-  login(): void {
-    this.oauthService.initImplicitFlow();
-  }
-
-  logout(): void {
-    this.oauthService.logOut();
-  }
-
   initAuthenticatedState(): void {
     this.isAuthenticated = this.oauthService.getIdentityClaims() != null;
   }
@@ -76,18 +74,16 @@ export class AppComponent implements OnInit{
     if (!state) return;
 
     const values = state.split('=');
-    if (values?.length == 2) {
-      this.isSubscribing = values[0] == 'id'
-      if (this.isSubscribing) {
-        this.router.navigate(['/subscribing'], {
-          queryParams: {
-            to: values[1],
-            google: true
-          }
-        });
-      }
-    } else {
-      this.router.navigate(['/sharing'])
-    }
+    this.isSubscribing = values[0] == 'id';
+    this.isSharing = values[0] == 'isSharing';
+
+    if (this.isSubscribing) {
+      this.router.navigate(['/subscribing'], {
+        queryParams: {
+          to: values[1],
+          google: true
+        }
+      });
+    } else if (this.isSharing) this.router.navigate(['/sharing']);
   }
 }

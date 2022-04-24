@@ -1,15 +1,8 @@
 <div id="main-container">
   <mat-card id="main-card">
     <router-outlet></router-outlet>
-
-    <ng-container *ngIf="!isAuthenticated">
-      <button mat-flat-button color="primary" (click)="login()">Authenticate with Google</button>
-    </ng-container>
-    <ng-container *ngIf="isAuthenticated">
-      <button mat-flat-button color="accent" (click)="logout()">Log out</button>
-    </ng-container>
     <div class="mat-caption" style="margin-top: 24px;">
-      <button mat-flat-button [routerLink]="'about'" style="margin-right: 8px;">About this Project</button>
+      <button mat-flat-button *ngIf="!isAbout" [routerLink]="''" style="margin-right: 8px;">About this Project</button>
       <button mat-flat-button [routerLink]="'privacy'">Privacy Policy</button>
     </div>
   </mat-card>

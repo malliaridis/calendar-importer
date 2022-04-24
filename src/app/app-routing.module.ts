@@ -7,7 +7,7 @@ import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {path: 'privacy', component: PrivacyComponent},
-  {path: 'sharing', component: SharingComponent, canActivate: [AuthGuard]},
+  {path: 'sharing', component: SharingComponent},
   {path: 'subscribing', component: SubscribingComponent},
   {path: '', component: AboutComponent, pathMatch: 'full'},
   {path: '**', redirectTo: ''}
