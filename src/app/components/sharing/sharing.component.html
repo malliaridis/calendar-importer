@@ -16,7 +16,8 @@
   <div class="mat-body-1">Grant calendar access rights so the website can list your calendars and provide
     shareable links.
   </div>
-  <button mat-flat-button color="primary" (click)="onGrantAccess()" style="margin-top:16px;">Grant access rights
+  <button mat-flat-button (click)="onGrantAccess()" class="google-button">
+    <img src="../../../assets/icons/btn_google_signin_dark_normal_web.png" alt="Sign In With Google"/>
   </button>
 </ng-container>
 <ng-container *ngIf="isAuthenticated">
